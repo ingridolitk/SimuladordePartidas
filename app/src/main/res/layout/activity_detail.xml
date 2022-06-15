@@ -49,8 +49,8 @@
             android:layout_height="wrap_content">
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:layout_width="@dimen/margin_36"
-                android:layout_height="@dimen/margin_16"
+                android:layout_width="@dimen/widht_38"
+                android:layout_height="@dimen/height_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:visibility="gone"/>
@@ -101,12 +101,12 @@
 
             <TextView
                 android:id="@+id/txtPlacar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/widht_38"
+                android:layout_height="@dimen/height_24"
                 android:text="@string/value_99"
                 android:textSize="@dimen/txtSize_20"
                 app:layout_constraintBottom_toTopOf="@+id/txtDescription"
-                tools:layout_editor_absoluteX="152dp" />
+                app:layout_constraintStart_toEndOf="@+id/imgLayout" />
 
             <TextView
                 android:id="@+id/txtVersos"
@@ -129,12 +129,12 @@
 
             <TextView
                 android:id="@+id/txtPlacar2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="105"
+                android:layout_width="@dimen/widht_38"
+                android:layout_height="@dimen/height_24"
+                android:text="@string/txtPlacar"
                 android:textSize="@dimen/txtSize_20"
                 app:layout_constraintBottom_toBottomOf="@+id/imgSecondLayout"
-                tools:layout_editor_absoluteX="234dp" />
+                app:layout_constraintEnd_toStartOf="@+id/imgSecondLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

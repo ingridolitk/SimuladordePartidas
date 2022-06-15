@@ -4,4 +4,6 @@
     <string name="value_99">99</string>
     <string name="txtDescHome">Home Team</string>
     <string name="txtDescAway">Away Team</string>
+    <string name="txtPlacar">105</string>
+    <string name="textVersus">X</string>
 </resources>

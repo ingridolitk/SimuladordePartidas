@@ -43,26 +43,21 @@
 
         <TextView
             android:id="@+id/txtPlacar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
-            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_width="@dimen/widht_38"
+            android:layout_height="@dimen/height_24"
             android:text="@string/value_99"
             android:textSize="@dimen/txtSize_20"
-            app:layout_constraintBottom_toTopOf="@+id/txtDescription"
-            app:layout_constraintEnd_toStartOf="@+id/txtVersos"
-            app:layout_constraintStart_toEndOf="@+id/imgLayout"
-            app:layout_constraintTop_toTopOf="@+id/imgLayout" />
+            app:layout_constraintBottom_toBottomOf="@+id/imgLayout"
+            app:layout_constraintStart_toEndOf="@+id/imgLayout" />
 
         <TextView
             android:id="@+id/txtVersos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="X"
-            app:layout_constraintBottom_toBottomOf="@+id/imgLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/textVersus"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPlacar"
+            app:layout_constraintEnd_toStartOf="@+id/txtPlacar2"
+            app:layout_constraintStart_toEndOf="@+id/txtPlacar" />
 
         <ImageView
             android:id="@+id/imgSecondLayout"
@@ -76,15 +71,11 @@
 
         <TextView
             android:id="@+id/txtPlacar2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_7"
-            android:layout_marginEnd="@dimen/margin_7"
-            android:text="105"
+            android:layout_width="@dimen/widht_38"
+            android:layout_height="@dimen/height_24"
+            android:text="@string/txtPlacar"
             android:textSize="@dimen/txtSize_20"
             app:layout_constraintBottom_toBottomOf="@+id/imgSecondLayout"
-            app:layout_constraintEnd_toStartOf="@+id/imgSecondLayout"
-            app:layout_constraintStart_toEndOf="@+id/txtVersos"
-            app:layout_constraintTop_toTopOf="@+id/imgSecondLayout"/>
+            app:layout_constraintEnd_toStartOf="@+id/imgSecondLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
