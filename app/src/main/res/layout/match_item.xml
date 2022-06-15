@@ -4,29 +4,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_16">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <TextView
-            android:id="@+id/txtDescription3"
+            android:id="@+id/txtDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="42dp"
-            android:text="TextView"
+            android:layout_marginTop="@dimen/margin_4"
+            android:layout_marginEnd="@dimen/margin_36"
+            android:text="@string/txtDescAway"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/imgSecondLayout" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:id="@+id/imgLayout"
+            android:layout_width="@dimen/width_120"
+            android:layout_height="@dimen/height_120"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_16"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
@@ -35,39 +35,41 @@
             android:id="@+id/txtDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="46dp"
-            android:layout_marginTop="4dp"
-            android:text="TextView"
+            android:layout_marginStart="@dimen/margin_36"
+            android:layout_marginTop="@dimen/margin_4"
+            android:text="@string/txtDescHome"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imgLayout" />
 
         <TextView
             android:id="@+id/txtPlacar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="99"
-            android:textSize="20dp"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:text="@string/value_99"
+            android:textSize="@dimen/txtSize_20"
             app:layout_constraintBottom_toTopOf="@+id/txtDescription"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintEnd_toStartOf="@+id/txtVersos"
+            app:layout_constraintStart_toEndOf="@+id/imgLayout"
+            app:layout_constraintTop_toTopOf="@+id/imgLayout" />
 
         <TextView
             android:id="@+id/txtVersos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="X"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/imgLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:id="@+id/imgSecondLayout"
+            android:layout_width="@dimen/width_120"
+            android:layout_height="@dimen/height_120"
+            android:layout_marginTop="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
@@ -76,11 +78,13 @@
             android:id="@+id/txtPlacar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="7dp"
+            android:layout_marginStart="@dimen/margin_7"
+            android:layout_marginEnd="@dimen/margin_7"
             android:text="105"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+            android:textSize="@dimen/txtSize_20"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSecondLayout"
+            app:layout_constraintEnd_toStartOf="@+id/imgSecondLayout"
+            app:layout_constraintStart_toEndOf="@+id/txtVersos"
+            app:layout_constraintTop_toTopOf="@+id/imgSecondLayout"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

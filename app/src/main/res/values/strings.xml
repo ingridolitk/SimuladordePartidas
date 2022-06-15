@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">SimuladorPartidas</string>
     <string name="txt_simulador_de_partidas">Simulação de Partidas</string>
+    <string name="value_99">99</string>
+    <string name="txtDescHome">Home Team</string>
+    <string name="txtDescAway">Away Team</string>
 </resources>

@@ -36,6 +36,9 @@ android {
             jcenter()
         }
     }
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
