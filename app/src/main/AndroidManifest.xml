@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SimuladordePartidas">
         <activity
-            android:name=".DetailActivity"
+            android:name=".ui.DetailActivity"
             android:exported = "true"
             android:theme = "@style/Theme.SimuladordePartidas.NoActionBar"/>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.MainActivity"
             android:exported = "true"
             android:theme = "@style/Theme.SimuladordePartidas.NoActionBar">
             <intent-filter>
