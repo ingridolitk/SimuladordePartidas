@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">SimuladorPartidas</string>
-    <string name="txt_simulador_de_partidas">Simulação de Partidas</string>
-    <string name="value_99">99</string>
-    <string name="txtDescHome">Home Team</string>
-    <string name="txtDescAway">Away Team</string>
-    <string name="txtPlacar">105</string>
-    <string name="textVersus">X</string>
+    <string name="app_name">simulator_futbol</string>
+    <string name="txt_simulation">Botão para simular partidas</string>
+    <string name="txt_time_Mandante">Imagem do time mandante</string>
+    <string name="txt_timeVisitante">Imagem time visitante</string>
+    <string name="txt_version">X</string>
+    <string name="erro_api">"Erro inesperado"</string>
 </resources>
