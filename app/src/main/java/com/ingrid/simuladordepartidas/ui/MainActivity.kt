@@ -1,13 +1,26 @@
 package com.ingrid.simuladordepartidas.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
+import com.ingrid.simuladordepartidas.R
+import com.ingrid.simuladordepartidas.data.MatchesAPI
 import com.ingrid.simuladordepartidas.databinding.ActivityMainBinding
-import com.ingrid.simuladordepartidas.domain.Team
-import java.sql.Time
+import com.ingrid.simuladordepartidas.domain.Match
+import com.ingrid.simuladordepartidas.ui.adapter.MatchesAdapter
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding:ActivityMainBinding
+    private lateinit var matchesAPI: MatchesAPI
+    lateinit var binding: ActivityMainBinding
+    lateinit var matchesAdapter: MatchesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,23 +28,78 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val time: Team = Team("teste", 1, "teste")
-        time.image
-
+        setupHTTPClient()
         setupMatchList()
         setupMatchRefresh()
         setupFloatActionButton()
     }
 
+    private fun setupHTTPClient() {
+        val BASE_URL = "https://luizsfl.github.io/matches-simulator-api/"
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        matchesAPI = retrofit.create(MatchesAPI::class.java)
+    }
+
+    fun setupMatchList() {
+        binding.srfMatchs.isRefreshing = true
+        binding.rcvMatchs.setHasFixedSize(true)
+        binding.rcvMatchs.layoutManager = LinearLayoutManager(this)
+        matchesAdapter = MatchesAdapter(Collections.emptyList())
+        binding.rcvMatchs.adapter = matchesAdapter
+
+        matchesAPI.getMatches().enqueue(object : Callback<List<Match>> {
+
+            override fun onResponse(
+                call: Call<List<Match>>,
+                response: Response<List<Match>>
+            ) {
+                if (response.isSuccessful) {
+                    var matches: List<Match>? = response.body()
+                    matchesAdapter = MatchesAdapter(matches)
+                    binding.rcvMatchs.adapter = matchesAdapter
+                } else {
+                    showErrorMessage()
+                }
+                binding.srfMatchs.isRefreshing = false
+            }
+
+            override fun onFailure(call: Call<List<Match>>, t: Throwable) {
+                showErrorMessage()
+                binding.srfMatchs.isRefreshing = false
+            }
+        })
+    }
+
     private fun setupFloatActionButton() {
-        TODO("Not yet implemented")
+        binding.fabSimulate.setOnClickListener {
+            var random = Random()
+
+            for (i in 0..matchesAdapter.itemCount - 1) {
+                var mat = matchesAdapter.matches.get(i)
+                mat.homeTeam.stars = random.nextInt(mat.homeTeam.stars + 1)
+                mat.awayTeam.stars = random.nextInt(mat.awayTeam.stars + 1)
+                matchesAdapter.notifyItemChanged(i)
+            }
+        }
     }
 
     private fun setupMatchRefresh() {
-        TODO("Not yet implemented")
+        binding.srfMatchs.setOnRefreshListener(this::findMatchesFromApi);
     }
 
-    private fun setupMatchList() {
-        TODO("Not yet implemented")
+    private fun showErrorMessage() {
+        Snackbar.make(binding.fabSimulate, R.string.erro_api, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun findMatchesFromApi() {
+        binding.srfMatchs.isRefreshing = true
+
+        binding.srfMatchs.isRefreshing = false
+
     }
 }
+

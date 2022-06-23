@@ -9,4 +9,6 @@
     <dimen name="app_bar_height">152</dimen>
     <dimen name="height_24">24dp</dimen>
     <dimen name="widht_38">38dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="team_image_size">120dp</dimen>
 </resources>
