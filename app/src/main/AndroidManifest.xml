@@ -15,7 +15,8 @@
         <activity
             android:name=".ui.DetailActivity"
             android:exported = "true"
-            android:theme = "@style/Theme.SimuladordePartidas.NoActionBar"/>
+            android:theme = "@style/Theme.SimuladordePartidas.NoActionBar"
+            android:parentActivityName=".ui.MainActivity"/>
 
         <activity android:name=".ui.MainActivity"
             android:exported = "true"

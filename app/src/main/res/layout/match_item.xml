@@ -27,11 +27,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
             android:layout_marginBottom="@dimen/margin_default"
-            tools:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/ivHomeTeam"
-            app:layout_constraintStart_toStartOf="@+id/ivHomeTeam"
-            app:layout_constraintTop_toBottomOf="@+id/ivHomeTeam" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivHomeTeam"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/tvHomeTeamScore"
@@ -70,14 +70,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
-            android:layout_marginEnd="@dimen/margin_default"
             android:layout_marginBottom="@dimen/margin_default"
-            tools:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/ivAwayTeam"
-            app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/ivAwayTeam"
-            app:layout_constraintTop_toBottomOf="@+id/ivAwayTeam" />
+            app:layout_constraintTop_toBottomOf="@+id/ivAwayTeam"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/tvAwayTeamScore"

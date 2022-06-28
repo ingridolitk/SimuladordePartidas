@@ -16,7 +16,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var matchesAPI: MatchesAPI
     lateinit var binding: ActivityMainBinding
@@ -45,11 +44,37 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupMatchList() {
-        binding.srfMatchs.isRefreshing = true
         binding.rcvMatchs.setHasFixedSize(true)
         binding.rcvMatchs.layoutManager = LinearLayoutManager(this)
+        findMatchesFromApi()
         matchesAdapter = MatchesAdapter(Collections.emptyList())
         binding.rcvMatchs.adapter = matchesAdapter
+    }
+
+    private fun setupFloatActionButton() {
+        binding.fabSimulate.setOnClickListener() {
+
+            var random = Random()
+
+            for (i in 0..matchesAdapter.itemCount - 1) {
+                var mat = matchesAdapter.matches.get(i)
+                mat.homeTeam.score = random.nextInt(mat.homeTeam.stars + 1)
+                mat.awayTeam.score = random.nextInt(mat.awayTeam.stars + 1)
+                matchesAdapter.notifyItemChanged(i)
+            }
+        }
+    }
+
+    private fun setupMatchRefresh() {
+        binding.srfMatchs.setOnRefreshListener(this::findMatchesFromApi);
+    }
+
+    private fun showErrorMessage() {
+        Snackbar.make(binding.fabSimulate, R.string.erro_api, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun findMatchesFromApi() {
+        binding.srfMatchs.isRefreshing = true
 
         matchesAPI.getMatches().enqueue(object : Callback<List<Match>> {
 
@@ -72,31 +97,6 @@ class MainActivity : AppCompatActivity() {
                 binding.srfMatchs.isRefreshing = false
             }
         })
-    }
-
-    private fun setupFloatActionButton() {
-        binding.fabSimulate.setOnClickListener {
-            var random = Random()
-
-            for (i in 0..matchesAdapter.itemCount - 1) {
-                var mat = matchesAdapter.matches.get(i)
-                mat.homeTeam.stars = random.nextInt(mat.homeTeam.stars + 1)
-                mat.awayTeam.stars = random.nextInt(mat.awayTeam.stars + 1)
-                matchesAdapter.notifyItemChanged(i)
-            }
-        }
-    }
-
-    private fun setupMatchRefresh() {
-        binding.srfMatchs.setOnRefreshListener(this::findMatchesFromApi);
-    }
-
-    private fun showErrorMessage() {
-        Snackbar.make(binding.fabSimulate, R.string.erro_api, Snackbar.LENGTH_LONG).show()
-    }
-
-    private fun findMatchesFromApi() {
-        binding.srfMatchs.isRefreshing = true
 
         binding.srfMatchs.isRefreshing = false
 
